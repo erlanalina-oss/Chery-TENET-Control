@@ -1,8 +1,9 @@
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 191,
-  "versionName": "7.9.91",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.91/app-release.apk",
-  "sizeBytes": 0,
-  "notes": "Обновление Chery TENET Control 7.9.91"
+  "versionCode": 192,
+  "versionName": "7.9.92-OEM-DIAG",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/V7.9.92/app-release.apk",
+  "sha256": "62a1d4ec51fdbcb5a56cd248f1175e7374c305d56a87f65573086012387a70f7",
+  "sizeBytes": 8830854,
+  "notes": "Обновление Chery TENET Control 7.9.92"
 }
