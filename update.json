@@ -1,9 +1,9 @@
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 192,
-  "versionName": "7.9.92-OEM-DIAG",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/V7.9.92/app-release.apk",
-  "sha256": "62a1d4ec51fdbcb5a56cd248f1175e7374c305d56a87f65573086012387a70f7",
-  "sizeBytes": 8830854,
-  "notes": "Обновление Chery TENET Control 7.9.92"
+  "versionCode": 214,
+  "versionName": "7.9.114-SEAT-HOLD-AUDIT",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/7.9.114/app-release.1.apk",
+  "sha256": "41a0ec0f88eff47cab45ee17f8a23ca549a3809694b61f69acf7668926ba5f66",
+  "sizeBytes": 9231158,
+  "notes": "Обновление Chery TENET Control 7.9.114"
 }
