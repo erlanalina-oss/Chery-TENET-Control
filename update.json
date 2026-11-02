@@ -3,6 +3,7 @@
   "versionCode": 262,
   "versionName": "7.9.162",
   "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/7.9.162/app-release.apk",
-  "sizeBytes": 0,
+  "sizeBytes": 14230165,
+  "sha256": "07dd50381843d8e8cf49db8950cb3230d917fbdb6dd20c93264b92f438e49553",
   "notes": "Обновление Chery TENET Control 7.9.162"
 }
