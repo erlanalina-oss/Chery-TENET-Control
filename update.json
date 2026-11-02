@@ -1,9 +1,10 @@
+
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 262,
-  "versionName": "7.9.162",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.162/app-release.apk",
-  "sizeBytes": 14230165,
-  "sha256": "07dd50381843d8e8cf49db8950cb3230d917fbdb6dd20c93264b92f438e49553",
-  "notes": "7.9.162: 20 тем оформления; одновременное включение выбранных подогревов; корректировка наружной температуры и направлений обдува; исправление кнопки воспроизведения музыки."
+  "versionCode": 265,
+  "versionName": "7.9.165",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.165/app-release.apk",
+  "sizeBytes": 14223717,
+  "sha256": "7bff86f80e3490561c5fa51961ee61804c9a9a3d333ab324d90b176f250a86f4",
+  "notes": "7.9.165: Упрощены настройки автокомфорта и выбор подогревов галочками, скрыты служебные подписи, добавлено восстановление эквалайзера при запуске приложения."
 }
