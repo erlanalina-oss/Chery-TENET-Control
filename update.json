@@ -1,9 +1,8 @@
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 214,
-  "versionName": "7.9.114-SEAT-HOLD-AUDIT",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/7.9.114/app-release.1.apk",
-  "sha256": "41a0ec0f88eff47cab45ee17f8a23ca549a3809694b61f69acf7668926ba5f66",
-  "sizeBytes": 9231158,
-  "notes": "Обновление Chery TENET Control 7.9.114"
+  "versionCode": 262,
+  "versionName": "7.9.162",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/7.9.162/app-release.apk",
+  "sizeBytes": 0,
+  "notes": "Обновление Chery TENET Control 7.9.162"
 }
