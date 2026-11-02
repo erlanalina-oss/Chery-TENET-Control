@@ -5,5 +5,5 @@
   "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.162/app-release.apk",
   "sizeBytes": 14230165,
   "sha256": "07dd50381843d8e8cf49db8950cb3230d917fbdb6dd20c93264b92f438e49553",
-  "notes": "Обновление Chery TENET Control 7.9.162"
+  "notes": "7.9.162: 20 тем оформления; одновременное включение выбранных подогревов; корректировка наружной температуры и направлений обдува; исправление кнопки воспроизведения музыки."
 }
