@@ -1,10 +1,9 @@
-
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 265,
-  "versionName": "7.9.165",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.165/app-release.apk",
-  "sizeBytes": 14223717,
-  "sha256": "7bff86f80e3490561c5fa51961ee61804c9a9a3d333ab324d90b176f250a86f4",
-  "notes": "7.9.165: Упрощены настройки автокомфорта и выбор подогревов галочками, скрыты служебные подписи, добавлено восстановление эквалайзера при запуске приложения."
+  "versionCode": 323,
+  "versionName": "7.9.223",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.223/app-release.apk",
+  "sizeBytes": 16688296,
+  "notes": "Обновление Chery TENET Control 7.9.223",
+  "sha256": "f9c800c9c06a7d5e73a7214b201e22a22d1e9b5c93cae3c96926393237c500eb"
 }
