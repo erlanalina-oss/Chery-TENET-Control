@@ -1,9 +1,11 @@
+
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 323,
-  "versionName": "7.9.223",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.223/app-release.apk",
-  "sizeBytes": 16688296,
-  "notes": "Обновление Chery TENET Control 7.9.223",
-  "sha256": "f9c800c9c06a7d5e73a7214b201e22a22d1e9b5c93cae3c96926393237c500eb"
+  "versionCode": 325,
+  "versionName": "7.9.225",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.225/app-release.apk",
+  "sizeBytes": 11804443,
+  "notes": "Независимый запуск Яндекс Навигатора на приборной панели без navPP; параллельный запуск Chery TENET Control и навигации; улучшено раннее возобновление Яндекс Музыки.",
+  "sha256": "755a7fb903fa9329d9c11ff9eab360f86005975ceb356b05555428329fee9fe4"
 }
+  
