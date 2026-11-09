@@ -4,6 +4,30 @@
   "updatedAt": "2026-11-09",
   "apps": [
     {
+      "title": "Fast Task Killer",
+      "packageName": "jp.snowlife01.android.appkiller2",
+      "versionCode": 45,
+      "versionName": "4.0.4",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/Fast%20Task%20Killer_4.0.4_APKPure.apk",
+      "sha256": "d9bcac6bb8fa44a50df3af19c84f18f21a6b3aa676b156e3da894cb7abed0aca",
+      "sizeBytes": 1105635,
+      "minSdk": 19
+    },
+    {
+      "title": "FreeZona",
+      "packageName": "free.zona",
+      "versionCode": 1063,
+      "versionName": "3.0.63",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/FreeZona_3.0.63_mod.apk",
+      "sha256": "41267642f4e11a7d5662647b22fe9ea51e013f9ac7f44462f60dcb93a42408a0",
+      "sizeBytes": 19839935,
+      "minSdk": 21
+    },
+    {
       "title": "HUD Speed",
       "packageName": "air.StrelkaHUDFREE",
       "versionCode": 70000002,
@@ -37,6 +61,18 @@
       "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/%D0%A4%D0%B0%D0%B8%CC%86%D0%BB%D0%BE%D0%B2%D1%8B%D0%B8%CC%86%2B%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%2B%2B%2B3.8.3.apk",
       "sha256": "69f7604d8bb007676c9c0e8b2afbcad7359eeece6281df658837fca0bff15d9c",
       "sizeBytes": 14087294,
+      "minSdk": 21
+    },
+    {
+      "title": "Эквалайзер",
+      "packageName": "com.jazibkhan.equalizer",
+      "versionCode": 133,
+      "versionName": "4.7.6",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/Equalizer.apk",
+      "sha256": "a0fdd4f591beab28327f6f173cf5918dd4f39f627d9529c136122de0e8544890",
+      "sizeBytes": 7168995,
       "minSdk": 21
     },
     {
