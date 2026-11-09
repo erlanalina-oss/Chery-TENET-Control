@@ -1,3 +1,19 @@
 {
-  "apps": []
+  "schemaVersion": 1,
+  "storeName": "Chery TENET Store",
+  "updatedAt": "2026-11-09",
+  "apps": [
+    {
+      "title": "UbikiTouch",
+      "packageName": "eu.toneiv.ubktouch",
+      "versionCode": 69193,
+      "versionName": "1.16.3",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/1760158987_ubikitouch-v1_16_3-mod-5mod_ru.apk",
+      "sha256": "261676b49bd9135577024e3f4846eb9e538db399204e42d5cdd49b0d3446c93e",
+      "sizeBytes": 5401531,
+      "minSdk": 21
+    }
+  ]
 }
