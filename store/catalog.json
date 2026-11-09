@@ -4,6 +4,18 @@
   "updatedAt": "2026-11-09",
   "apps": [
     {
+      "title": "HUD Speed",
+      "packageName": "air.StrelkaHUDFREE",
+      "versionCode": 70000002,
+      "versionName": "70.0",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/antiradar-hud-speed-lite-androeed.store-0-1740089640.apk",
+      "sha256": "c5ffedfd7653543891117db12d27e4bd4e1e64f96f09d0a3f2d4bb8957574d53",
+      "sizeBytes": 15023933,
+      "minSdk": 21
+    },
+    {
       "title": "UbikiTouch",
       "packageName": "eu.toneiv.ubktouch",
       "versionCode": 69193,
@@ -38,6 +50,18 @@
       "sha256": "141807776f21dbd525fb720ee39af823277f91ec5f5e8ec912676a3c4dd02dd8",
       "sizeBytes": 8005621,
       "minSdk": 28
+    },
+    {
+      "title": "Яндекс Радио",
+      "packageName": "ru.yandex.mobile.fmradio",
+      "versionCode": 99999999,
+      "versionName": "2026.06.3 #18.1rur",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81_%D0%A0%D0%B0%D0%B4%D0%B8%D0%BE_2026.06.3_mod.apk",
+      "sha256": "fcb7ffe963dc28031c5c79fb2ed4d9e394ff53ad1494f23dfdacf1802959e417",
+      "sizeBytes": 14135136,
+      "minSdk": 24
     }
   ]
 }
