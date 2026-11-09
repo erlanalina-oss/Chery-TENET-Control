@@ -52,6 +52,42 @@
       "minSdk": 21
     },
     {
+      "title": "WiFi Manager",
+      "packageName": "org.kman.WifiManager",
+      "versionCode": 40030001,
+      "versionName": "4.3.0-230-nicolas",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/wifi_manager_4.3.0-230-nicolas.apk",
+      "sha256": "0ed5a4f676b23b99ff31e0040d137d41e87ed2b2090bf61517368f012f75fe8f",
+      "sizeBytes": 3413281,
+      "minSdk": 16
+    },
+    {
+      "title": "YouTube",
+      "packageName": "com.biomes.vanced",
+      "versionCode": 90580342,
+      "versionName": "5.5.80.342",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/YouTube-5.5.80.342-TM.Mod.apk",
+      "sha256": "9e35ca52eea0a58d7345b4e5211c286c6876fefd14e3eb7788e4b97588ecb94e",
+      "sizeBytes": 18087363,
+      "minSdk": 21
+    },
+    {
+      "title": "Режим ТО",
+      "packageName": "com.dr4tez.adbgrant",
+      "versionCode": 212,
+      "versionName": "4.2-209",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/Rezhim_TO_Final.apk",
+      "sha256": "6ee6ff1249a5277cd2b072e40837032123e1fd02e276d4ca0ca9a7e0c5eb0009",
+      "sizeBytes": 116461,
+      "minSdk": 26
+    },
+    {
       "title": "Файловый менеджер +",
       "packageName": "com.alphainventor.filemanager",
       "versionCode": 2103083,
