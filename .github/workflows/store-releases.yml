@@ -1,0 +1,159 @@
+name: Chery TENET Store - Large APK releases
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Published release tag beginning with store-"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chery-tenet-store-large-releases
+  cancel-in-progress: false
+
+jobs:
+  update-catalog:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'store-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out current catalog
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Install APK metadata tool
+        run: sdkmanager 'build-tools;35.0.0'
+
+      - name: Read published release APKs and update store/catalog.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          python3 - <<'PY'
+          import datetime
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import subprocess
+          import tempfile
+          import urllib.parse
+          import urllib.request
+
+          repository = os.environ['REPO']
+          tag = os.environ['RELEASE_TAG']
+          token = os.environ['GH_TOKEN']
+          if not tag.startswith('store-'):
+              raise SystemExit('Use a release tag starting with store- (for example store-maps-1.0)')
+
+          api_url = 'https://api.github.com/repos/' + repository + '/releases/tags/' + urllib.parse.quote(tag, safe='')
+          request = urllib.request.Request(api_url, headers={
+              'Authorization': 'Bearer ' + token,
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28'
+          })
+          with urllib.request.urlopen(request, timeout=40) as response:
+              release = json.load(response)
+          if release.get('draft'):
+              raise SystemExit('Publish the release before using this automation.')
+          assets = [a for a in release.get('assets', []) if a['name'].lower().endswith('.apk')]
+          max_store_apk = 350 * 1024 * 1024  # Client v7.9.244 download limit
+          for asset in assets:
+              if int(asset['size']) > max_store_apk:
+                  raise SystemExit('APK is over 350 MiB and current Chery TENET Store cannot download it: '+asset['name'])
+          if not assets:
+              raise SystemExit('Release contains no .apk files. Attach APKs before clicking Publish release.')
+
+          aapt = pathlib.Path(os.environ['ANDROID_HOME']) / 'build-tools' / '35.0.0' / 'aapt'
+          catalog_path = pathlib.Path('store/catalog.json')
+          if not catalog_path.exists():
+              raise SystemExit('store/catalog.json does not exist. Keep your existing store catalog.')
+          catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+          if catalog.get('schemaVersion') != 1 or not isinstance(catalog.get('apps'), list):
+              raise SystemExit('Unexpected catalog structure. Existing catalog has NOT been modified.')
+          apps = {x['packageName']: x for x in catalog['apps'] if 'packageName' in x}
+
+          def take(pattern, text, default=None):
+              match = re.search(pattern, text, flags=re.MULTILINE)
+              return match.group(1) if match else default
+
+          with tempfile.TemporaryDirectory(prefix='chery-store-release-') as temp:
+              for index, asset in enumerate(assets):
+                  apk_path = pathlib.Path(temp) / ('app_' + str(index) + '.apk')
+                  url = asset['browser_download_url']
+                  if not url.startswith('https://github.com/' + repository + '/releases/download/'):
+                      raise SystemExit('Unexpected release download URL for ' + asset['name'])
+                  with urllib.request.urlopen(url, timeout=120) as response, apk_path.open('wb') as out:
+                      while True:
+                          chunk = response.read(1024 * 1024)
+                          if not chunk:
+                              break
+                          out.write(chunk)
+                  if apk_path.stat().st_size != int(asset['size']):
+                      raise SystemExit('Download size mismatch for ' + asset['name'])
+
+                  metadata = subprocess.check_output(
+                      [str(aapt), 'dump', 'badging', str(apk_path)],
+                      text=True, errors='replace'
+                  )
+                  match = re.search(
+                      r"^package: name='([^']+)' versionCode='(\d+)' versionName='([^']*)'",
+                      metadata, re.MULTILINE
+                  )
+                  if not match:
+                      raise SystemExit('Could not read APK package and version: ' + asset['name'])
+                  package, code, version = match.groups()
+                  min_sdk = int(take(r"^sdkVersion:'(\d+)'", metadata, '1'))
+                  if min_sdk > 28:
+                      print('Skipping Android 9 incompatible APK:', asset['name'], 'minSdk=', min_sdk)
+                      continue
+                  label = (
+                      take(r"^application-label-ru:'([^']*)'", metadata)
+                      or take(r"^application-label:'([^']*)'", metadata)
+                      or pathlib.Path(asset['name']).stem
+                  )
+                  with apk_path.open('rb') as file:
+                      digest = hashlib.file_digest(file, 'sha256').hexdigest()
+                  new = dict(
+                      title=label[:90], packageName=package,
+                      versionCode=int(code), versionName=version or code,
+                      category='Приложения', description='',
+                      apkUrl=url, sha256=digest,
+                      sizeBytes=apk_path.stat().st_size, minSdk=min_sdk
+                  )
+                  old = apps.get(package)
+                  if old and int(old.get('versionCode', 0)) > new['versionCode']:
+                      print('Keeping newer existing entry:', package)
+                      continue
+                  apps[package] = new
+                  print('Added:', package, 'version', new['versionName'], 'size', new['sizeBytes'])
+
+          catalog['apps'] = sorted(apps.values(), key=lambda app: app.get('title', '').casefold())
+          catalog['updatedAt'] = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+          catalog_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('Total catalog entries:', len(catalog['apps']))
+          PY
+
+      - name: Commit catalog update to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add store/catalog.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update store catalog from large APK release"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "No changes to store catalog"
+          fi
