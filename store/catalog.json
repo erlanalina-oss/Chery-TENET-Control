@@ -100,18 +100,6 @@
       "minSdk": 21
     },
     {
-      "title": "Виджеты Tenet T4",
-      "packageName": "ru.tenet.t4.widgets",
-      "versionCode": 35,
-      "versionName": "1.34",
-      "category": "Приложения",
-      "description": "",
-      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/tenet-t4-widgets.apk",
-      "sha256": "9bd324aae592ac657b20ac7d95c936f967a60d534596115da9136651b21ff211",
-      "sizeBytes": 219202,
-      "minSdk": 29
-    },
-    {
       "title": "Режим ТО",
       "packageName": "com.dr4tez.adbgrant",
       "versionCode": 212,
