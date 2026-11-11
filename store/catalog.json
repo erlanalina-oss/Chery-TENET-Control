@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "storeName": "Chery TENET Store",
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-11",
   "apps": [
     {
       "title": "Fast Task Killer",
@@ -40,16 +40,28 @@
       "minSdk": 21
     },
     {
-      "title": "RUTUBE",
-      "packageName": "ru.rutube.app",
-      "versionCode": 999999999,
-      "versionName": "31.8.0-rustore",
+      "title": "Radio Record",
+      "packageName": "com.infoshell.recradio",
+      "versionCode": 239,
+      "versionName": "4.2.36",
       "category": "Приложения",
       "description": "",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/Rutube.v31.8.0.MOD.1.apk",
-      "sha256": "ab7f72303d34a97ae80b960c7094062bbeb4ad543fe884a64328f0e4170ee04a",
-      "sizeBytes": 35309610,
-      "minSdk": 24
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/Radio_record.apk",
+      "sha256": "acca355e28a718f796df05f53c985a090771736cbf4c6ddee7febf7896ec08dc",
+      "sizeBytes": 10535532,
+      "minSdk": 21
+    },
+    {
+      "title": "Televizo",
+      "packageName": "com.ottplay.ottplay",
+      "versionCode": 350,
+      "versionName": "1.9.4.0",
+      "category": "Приложения",
+      "description": "",
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/televizo.apk",
+      "sha256": "6c26b1299577c1408bf03910e2e4d543b2b3fbf3a0aea14f35e0315ac412de0c",
+      "sizeBytes": 18598940,
+      "minSdk": 21
     },
     {
       "title": "UbikiTouch",
@@ -62,18 +74,6 @@
       "sha256": "261676b49bd9135577024e3f4846eb9e538db399204e42d5cdd49b0d3446c93e",
       "sizeBytes": 5401531,
       "minSdk": 21
-    },
-    {
-      "title": "VK Музыка",
-      "packageName": "com.uma.musicvk",
-      "versionCode": 13628,
-      "versionName": "8.42",
-      "category": "Приложения",
-      "description": "",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/VK-Music-8.42-mod.apk",
-      "sha256": "5726f8151e2bb856095db7a69bef1bd2c6a0afc4a89134bfec071857e093eac9",
-      "sizeBytes": 78604680,
-      "minSdk": 28
     },
     {
       "title": "WiFi Manager",
@@ -100,28 +100,16 @@
       "minSdk": 21
     },
     {
-      "title": "Кинопоиск",
-      "packageName": "ru.kinopoisk.tv",
-      "versionCode": 198138,
-      "versionName": "2.270.2",
+      "title": "Виджеты Tenet T4",
+      "packageName": "ru.tenet.t4.widgets",
+      "versionCode": 35,
+      "versionName": "1.34",
       "category": "Приложения",
       "description": "",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/KinopoiskTV-2.270.2-mod.apk",
-      "sha256": "3be2eb321b0d8fd0d2e6586cf2058360f8bd8cecddb617cdead09e9380908083",
-      "sizeBytes": 45395092,
-      "minSdk": 24
-    },
-    {
-      "title": "Лайт HD TV",
-      "packageName": "limehd.ru.lite",
-      "versionCode": 523,
-      "versionName": "4.2.1",
-      "category": "Приложения",
-      "description": "",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/_HD_TV_v4.2.1.%40android_igry_ru.apk",
-      "sha256": "97785397e743654ea4af407482d2dd868f192c8f5d4306ff07598158af77b5eb",
-      "sizeBytes": 40720343,
-      "minSdk": 21
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/tenet-t4-widgets.apk",
+      "sha256": "9bd324aae592ac657b20ac7d95c936f967a60d534596115da9136651b21ff211",
+      "sizeBytes": 219202,
+      "minSdk": 29
     },
     {
       "title": "Режим ТО",
@@ -172,16 +160,16 @@
       "minSdk": 28
     },
     {
-      "title": "Яндекс Музыка Clone",
-      "packageName": "ru.yandex.siren",
-      "versionCode": 24024312,
-      "versionName": "2024.06.1 ST",
+      "title": "Яндекс Браузер",
+      "packageName": "com.yandex.browser.lite",
+      "versionCode": 210100188,
+      "versionName": "21.1.0.188",
       "category": "Приложения",
       "description": "",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/Yandex.Music.ST-2024.06.1-MYT_clone.apk",
-      "sha256": "10211c8d383174d2eae7dbbc8047bc30019a851c24698956ed00defa57cec24f",
-      "sizeBytes": 31471569,
-      "minSdk": 24
+      "apkUrl": "https://raw.githubusercontent.com/erlanalina-oss/Chery-TENET-Control/main/store/Ya_browser.apk",
+      "sha256": "bf85116b2c35df8a16d711e224876f7ba4faa24d13252144df74b2d4163fcd28",
+      "sizeBytes": 1454650,
+      "minSdk": 16
     },
     {
       "title": "Яндекс Радио",
@@ -194,18 +182,6 @@
       "sha256": "fcb7ffe963dc28031c5c79fb2ed4d9e394ff53ad1494f23dfdacf1802959e417",
       "sizeBytes": 14135136,
       "minSdk": 24
-    },
-    {
-      "title": "Яндекс.Навигатор",
-      "packageName": "ru.yandex.yandexnavi",
-      "versionCode": 39713000,
-      "versionName": "3.97.13",
-      "category": "Приложения",
-      "description": "",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/Yandex_Navigator_3_97_13_CHERYTENETCONTROL.apk",
-      "sha256": "806b5c821d3480ef776f81781ad4a29c4841c5fa14371de6de21dec98f22bc2b",
-      "sizeBytes": 120704302,
-      "minSdk": 17
     }
   ]
 }
