@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "storeName": "Chery TENET Store",
-  "updatedAt": "2026-11-12",
+  "updatedAt": "2026-11-21",
   "apps": [
     {
       "title": "Fast Task Killer",
@@ -234,13 +234,13 @@
     {
       "title": "Яндекс.Навигатор",
       "packageName": "ru.yandex.yandexnavi",
-      "versionCode": 39713000,
-      "versionName": "3.97.13",
+      "versionCode": 39713001,
+      "versionName": "3.97.13-v4.1.1",
       "category": "Приложения",
-      "description": "Яндекс Навигатор с поддержкой Алисы и вызовом голосового помощника с кнопки руля.",
-      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/Yandex_Navigator_3_97_13_CHERYTENETCONTROL.apk",
-      "sha256": "806b5c821d3480ef776f81781ad4a29c4841c5fa14371de6de21dec98f22bc2b",
-      "sizeBytes": 120704302,
+      "description": "Яндекс Навигатор V4.1.1: исправлен вылет при первом запуске, поддержка Алисы и вызов голосового помощника с кнопки руля.",
+      "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/store-001/Yandex_Navigator_3_97_13_V4_1_1_ALICE_MIC_FIRST_START_FIX.apk",
+      "sha256": "2de93d3a459b182fc7060b605655eebe65d3960c03c74e7d747bd0922d108842",
+      "sizeBytes": 120779403,
       "minSdk": 17
     }
   ]
