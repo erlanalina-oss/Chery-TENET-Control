@@ -1,9 +1,9 @@
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 377,
-  "versionName": "7.9.277-dev",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.277/app-release.apk",
-  "sizeBytes": 14624796,
-  "notes": "🚘 CHERY TENET CONTROL 7.9.277\n\n✨ Исправления и улучшения\n\n✅ Исправлен вызов Алисы с кнопки руля. Теперь голосовой помощник вызывается с первого нажатия.\n\n✅ Исправлено отображение интерфейса при вызове Алисы. Левая панель Chery TENET Control больше не перекрывается, приложение остаётся на экране.\n\n⚠️ ВАЖНО! ПОСЛЕ ОБНОВЛЕНИЯ\n\nДля корректной работы Алисы необходимо переустановить Яндекс Навигатор:\n1. Удалите ранее установленный Яндекс Навигатор.\n2. Откройте Chery TENET Control → Приложения → Магазин.\n3. Установите новый Яндекс Навигатор V4.1.1 из нашего магазина.\n\nПосле установки предоставьте необходимые разрешения, включая доступ к микрофону.\n\nВнимание: при удалении старого Навигатора могут сброситься его настройки и загруженные офлайн-карты.",
-  "sha256": "1171dc6c5912bddd1c3e5e47c2887f38623ee0ae3fc748423ca385a1ac601848"
+  "versionCode": 379,
+  "versionName": "7.9.279",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v7.9.279/app-release.apk",
+  "sizeBytes": 14641172,
+  "notes": "Обновление Chery TENET Control до версии 7.9.279.",
+  "sha256": "69b3c01c8266128afd9cf1a7ff8bbac0c886351b8b76fb55ace30fafe0d2068b"
 }
