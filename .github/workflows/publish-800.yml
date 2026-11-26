@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -22,6 +22,7 @@ jobs:
           test "$(stat -c %s "$RUNNER_TEMP/app-release.apk")" = 10217223
           echo "9ea95f83d7576d1e2a6512ffbe20b693019e316ed5f3c1027733b305029401cf  $RUNNER_TEMP/app-release.apk" | sha256sum -c
           cp release-800/notes.txt "$RUNNER_TEMP/notes.txt"
+      - uses: android-actions/setup-android@v4
       - name: Verify package version and signing certificate
         run: |
           set -euo pipefail
@@ -38,7 +39,7 @@ jobs:
       - name: Check current update and publish release
         run: |
           set -euo pipefail
-          git fetch origin main
+          git fetch origin +refs/heads/main:refs/remotes/origin/main
           git switch --detach origin/main
           python3 -c 'import json; d=json.load(open("update.json")); assert d["packageName"]=="com.example.cherytenetcontrol" and d["versionCode"]==390'
           gh release create v8.0.0 "$RUNNER_TEMP/app-release.apk" --target main --title "CHERY TENET CONTROL — 8.0.0" --notes-file "$RUNNER_TEMP/notes.txt" --draft
