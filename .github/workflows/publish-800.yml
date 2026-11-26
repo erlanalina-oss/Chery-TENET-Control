@@ -1,0 +1,63 @@
+name: Publish signed Chery TENET 8.0.0
+on:
+  push:
+    branches: ['release-transfer/8.0.0']
+    paths: ['.github/workflows/publish-800.yml']
+permissions:
+  contents: write
+concurrency:
+  group: chery-tenet-main-app-update
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble exact signed APK
+        run: |
+          set -euo pipefail
+          cat release-800/*.part > "$RUNNER_TEMP/app-release.apk"
+          test "$(stat -c %s "$RUNNER_TEMP/app-release.apk")" = 10217223
+          echo "9ea95f83d7576d1e2a6512ffbe20b693019e316ed5f3c1027733b305029401cf  $RUNNER_TEMP/app-release.apk" | sha256sum -c
+          cp release-800/notes.txt "$RUNNER_TEMP/notes.txt"
+      - name: Verify package version and signing certificate
+        run: |
+          set -euo pipefail
+          sdkmanager 'build-tools;35.0.0' >/dev/null
+          tools="$ANDROID_HOME/build-tools/35.0.0"
+          "$tools/aapt" dump badging "$RUNNER_TEMP/app-release.apk" > "$RUNNER_TEMP/badging.txt"
+          grep -F "package: name='com.example.cherytenetcontrol' versionCode='453' versionName='8.0.0'" "$RUNNER_TEMP/badging.txt"
+          grep -E "^sdkVersion:'([0-9]|1[0-9]|2[0-8])'" "$RUNNER_TEMP/badging.txt"
+          "$tools/apksigner" verify --min-sdk-version 28 --print-certs "$RUNNER_TEMP/app-release.apk" > "$RUNNER_TEMP/newcert.txt"
+          gh release download v7.9.290 --pattern app-release.apk --output "$RUNNER_TEMP/previous.apk"
+          echo "f57d27a66c32df7ce532a6d71638f76c67d61103195683fcaf8f6e5959c77d9c  $RUNNER_TEMP/previous.apk" | sha256sum -c
+          "$tools/apksigner" verify --min-sdk-version 28 --print-certs "$RUNNER_TEMP/previous.apk" > "$RUNNER_TEMP/oldcert.txt"
+          diff <(grep 'certificate SHA-256 digest:' "$RUNNER_TEMP/oldcert.txt") <(grep 'certificate SHA-256 digest:' "$RUNNER_TEMP/newcert.txt")
+      - name: Check current update and publish release
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git switch --detach origin/main
+          python3 -c 'import json; d=json.load(open("update.json")); assert d["packageName"]=="com.example.cherytenetcontrol" and d["versionCode"]==390'
+          gh release create v8.0.0 "$RUNNER_TEMP/app-release.apk" --target main --title "CHERY TENET CONTROL — 8.0.0" --notes-file "$RUNNER_TEMP/notes.txt" --draft
+          gh release edit v8.0.0 --draft=false --latest
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/public.apk" "https://github.com/$GITHUB_REPOSITORY/releases/download/v8.0.0/app-release.apk"
+          cmp "$RUNNER_TEMP/app-release.apk" "$RUNNER_TEMP/public.apk"
+      - name: Publish verified update.json
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          p=pathlib.Path("update.json")
+          old=json.loads(p.read_text())
+          assert old["versionCode"]==390
+          tmp=pathlib.Path(os.environ["RUNNER_TEMP"])
+          apk=tmp/"public.apk"
+          data={"packageName":"com.example.cherytenetcontrol","versionCode":453,"versionName":"8.0.0","apkUrl":"https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.0/app-release.apk","sizeBytes":apk.stat().st_size,"notes":(tmp/"notes.txt").read_text().strip(),"sha256":hashlib.sha256(apk.read_bytes()).hexdigest()}
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          git add update.json
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Publish verified 8.0.0 update for all users'
+          git push origin HEAD:main
