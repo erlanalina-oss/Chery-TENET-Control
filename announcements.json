@@ -14,6 +14,20 @@
       "partNumbers": [
         "703002570AA"
       ]
+    },
+    {
+      "id": "test-332-333-20261126-01",
+      "enabled": true,
+      "title": "Проверка связи с разработчиком",
+      "message": "Тестовое сообщение Chery TENET Control. Если вы видите это окно, получение объявлений разработчика работает. Никаких действий не требуется.",
+      "repeat": "once",
+      "startsAt": 1795651200000,
+      "expiresAt": 1795737600000,
+      "minVersionCode": 432,
+      "maxVersionCode": 433,
+      "partNumbers": [
+        "703002570AA"
+      ]
     }
   ]
 }
