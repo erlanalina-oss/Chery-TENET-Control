@@ -1,0 +1,79 @@
+name: Publish authorized 8.0.17 update
+on:
+  push:
+    branches: ['publish/8.0.17']
+    paths: ['.github/workflows/publish-817.yml']
+permissions:
+  contents: write
+concurrency:
+  group: chery-tenet-main-app-update
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify approved APK and current update channel
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64,pathlib,hashlib
+          pieces=sorted(pathlib.Path('transfer-817').glob('*.b64'))
+          assert len(pieces)==21
+          b=b''.join(base64.b64decode(p.read_bytes(),validate=True) for p in pieces)
+          assert hashlib.sha256(b).hexdigest()=='68216c67c47d3be32188848dfdc12c1ec75bfad1a067701d853be2a2a9ec1ffd'
+          pathlib.Path('/tmp/app-release.apk').write_bytes(b)
+          PY
+          git fetch origin main
+          git show origin/main:update.json > /tmp/current-update.json
+          python3 - <<'PY'
+          import json
+          p=json.load(open('/tmp/current-update.json'))
+          assert p['packageName']=='com.example.cherytenetcontrol'
+          assert int(p['versionCode'])<470, 'A newer or same version is already published'
+          PY
+      - name: Verify Android package and signature
+        run: |
+          set -euo pipefail
+          sdkmanager 'build-tools;34.0.0'
+          "$ANDROID_HOME/build-tools/34.0.0/aapt" dump badging /tmp/app-release.apk > /tmp/badging
+          grep -F "package: name='com.example.cherytenetcontrol' versionCode='470' versionName='8.0.17'" /tmp/badging
+          "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --min-sdk-version 28 /tmp/app-release.apk
+      - name: Publish authorized release and verify public APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cat > /tmp/notes <<'EOF'
+          CHERY TENET CONTROL — 8.0.17
+
+          Добавлен автоматический контроль подогревов сидений и лобового стекла каждые 2 секунды в течение 45 секунд. Если подогрев не сработал или самопроизвольно отключился, выполняется повторное включение.
+          EOF
+          if gh release view v8.0.17 >/dev/null 2>&1; then
+            echo 'Release already exists; refusing overwrite'
+            exit 1
+          fi
+          gh release create v8.0.17 /tmp/app-release.apk --target "$(git rev-parse origin/main)" --title 'CHERY TENET CONTROL — 8.0.17' --notes-file /tmp/notes --latest
+          curl --fail --location --retry 4 --output /tmp/public.apk https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.17/app-release.apk
+          cmp /tmp/app-release.apk /tmp/public.apk
+          echo '68216c67c47d3be32188848dfdc12c1ec75bfad1a067701d853be2a2a9ec1ffd  /tmp/public.apk' | sha256sum -c
+      - name: Publish verified update manifest
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git switch --detach origin/main
+          python3 - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('update.json')
+          old=json.loads(p.read_text())
+          assert old['packageName']=='com.example.cherytenetcontrol'
+          assert int(old['versionCode'])<470
+          b=pathlib.Path('/tmp/public.apk').read_bytes()
+          data={'packageName':'com.example.cherytenetcontrol','versionCode':470,'versionName':'8.0.17','apkUrl':'https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.17/app-release.apk','sizeBytes':len(b),'notes':pathlib.Path('/tmp/notes').read_text().strip(),'sha256':hashlib.sha256(b).hexdigest()}
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add update.json
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Publish verified 8.0.17 update for all users'
+          git push origin HEAD:main
