@@ -1,9 +1,9 @@
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 454,
-  "versionName": "8.0.1",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.1/app-release.apk",
-  "sizeBytes": 10217223,
-  "notes": "CHERY TENET CONTROL — 8.0.1\n\n• Исправлен автокомфорт при дистанционном запуске двигателя.\n• При дистанционном запуске учитывается только наружная температура.\n• При обычном запуске сохраняется учёт температуры двигателя.\n• Остальные функции версии 8.0.0 сохранены.\n\nОбновление для всех пользователей Chery TENET Control.",
-  "sha256": "847078946ae13eee7b0b6a459d2d9f0d72a13b43460902a8e666ec1a58e2f247"
+  "versionCode": 470,
+  "versionName": "8.0.17",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.17/app-release.apk",
+  "sizeBytes": 10824760,
+  "notes": "CHERY TENET CONTROL — 8.0.17\n\nДобавлен автоматический контроль подогревов сидений и лобового стекла каждые 2 секунды в течение 45 секунд. Если подогрев не сработал или самопроизвольно отключился, выполняется повторное включение.",
+  "sha256": "68216c67c47d3be32188848dfdc12c1ec75bfad1a067701d853be2a2a9ec1ffd"
 }
