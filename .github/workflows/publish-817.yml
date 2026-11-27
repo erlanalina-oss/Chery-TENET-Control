@@ -34,6 +34,11 @@ jobs:
           assert p['packageName']=='com.example.cherytenetcontrol'
           assert int(p['versionCode'])<470, 'A newer or same version is already published'
           PY
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v4
       - name: Verify Android package and signature
         run: |
           set -euo pipefail
