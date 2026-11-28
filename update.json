@@ -1,9 +1,9 @@
 {
   "packageName": "com.example.cherytenetcontrol",
-  "versionCode": 470,
-  "versionName": "8.0.17",
-  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.17/app-release.apk",
-  "sizeBytes": 10824760,
-  "notes": "CHERY TENET CONTROL — 8.0.17\n\nДобавлен автоматический контроль подогревов сидений и лобового стекла каждые 2 секунды в течение 45 секунд. Если подогрев не сработал или самопроизвольно отключился, выполняется повторное включение.",
-  "sha256": "68216c67c47d3be32188848dfdc12c1ec75bfad1a067701d853be2a2a9ec1ffd"
+  "versionCode": 480,
+  "versionName": "8.0.27",
+  "apkUrl": "https://github.com/erlanalina-oss/Chery-TENET-Control/releases/download/v8.0.27/app-release.apk",
+  "sizeBytes": 10857528,
+  "notes": "CHERY TENET CONTROL — 8.0.27\n\nОбщие исправления:\n• Исправлена ошибка, при которой кнопка «Все выкл.» не отключала задние подогревы.\n• Исправлено некорректное отображение кнопок подогревов при смене темы оформления.\n\nTiggo 7 Pro Max дорестайлинг:\n• Исправлено управление передними подогревами.\n• Доработано управление задними подогревами.\n\nTiggo 4 Pro:\n• Доработано управление передними и задними подогревами.\n• Адаптированы индикация и автокомфорт.\n\nПодогревы Tiggo 4 и задние подогревы дорестайлинга требуют проверки на автомобиле.",
+  "sha256": "5545d85b2916f87f101394dbc02c809a8bb5f16865202a0d0ac85ad7522d5758"
 }
